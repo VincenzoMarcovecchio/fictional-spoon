@@ -3,25 +3,25 @@
 // ####################################### //
 
 // Base
-@import "base/vars";
+@import 'base/vars';
 
 // Helpers
-@import "helpers/mixins";
-@import "helpers/utility-classes";
+@import 'helpers/mixins';
+@import 'helpers/utility-classes';
 
 // Layout
-@import "layout/body";
-@import "layout/header";
+@import 'layout/body';
+@import 'layout/header';
 
 // Pages
-@import "pages/checkout-confirm";
-@import "pages/checkout";
-@import "pages/home-page";
-@import "pages/product";
-@import "pages/about";
+@import 'pages/checkout-confirm';
+@import 'pages/checkout';
+@import 'pages/home-page';
+@import 'pages/product';
+@import 'pages/about';
 
 // Components
-@import "components/cart-modal";
-@import "components/explore-banner";
-@import "components/collection-banner";
-@import "components/footer-follow";
+@import 'components/cart-modal';
+@import 'components/explore-banner';
+@import 'components/collection-banner';
+@import 'components/footer-follow';

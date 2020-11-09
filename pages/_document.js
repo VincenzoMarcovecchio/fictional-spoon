@@ -1,8 +1,8 @@
 // _document is only rendered on the server side and not on the client side
 // Event handlers like onClick can't be added to this file
 
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -29,19 +29,35 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap"
+            rel="stylesheet"
+          ></link>
           <script src="https://unpkg.com/react-id-swiper@2.4.0/lib/react-id-swiper.min.js"></script>
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css"
           />
           <meta property="og:title" content="Commerce.js | Demo storefront" />
-          <meta property="og:image" content="https://cdn.chec.io/email/assets/marketing/demo-preview.png" />
-          <meta property="og:description" content="A custom, open source demo storefront built with Next.js and Commerce.js. Take a look!" />
+          <meta
+            property="og:image"
+            content="https://cdn.chec.io/email/assets/marketing/demo-preview.png"
+          />
+          <meta
+            property="og:description"
+            content="A custom, open source demo storefront built with Next.js and Commerce.js. Take a look!"
+          />
           <meta property="og:url" content="https://commercejs-demo-store.netlify.app" />
           <meta property="twitter:title" content="Commerce.js | Demo storefront" />
           <meta name="twitter:creator" content="@commercejs" />
-          <meta property="twitter:image" content="https://cdn.chec.io/email/assets/marketing/demo-preview.png" />
-          <meta property="twitter:description" content="A custom, open source demo storefront built with Next.js and Commerce.js. Take a look!" />
+          <meta
+            property="twitter:image"
+            content="https://cdn.chec.io/email/assets/marketing/demo-preview.png"
+          />
+          <meta
+            property="twitter:description"
+            content="A custom, open source demo storefront built with Next.js and Commerce.js. Take a look!"
+          />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <body>

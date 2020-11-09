@@ -1,6 +1,7 @@
 .explore-banner {
   .explore-banner--image {
-    background: url("/images/explore-banner.png") center center/cover;
+    background: url('/images/explore-banner.jpg') center center/contain;
+    background-repeat: no-repeat;
     padding-bottom: 100%;
 
     @include md {

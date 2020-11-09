@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import { createWrapper, HYDRATE } from 'next-redux-wrapper';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from "redux";
+import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import thunk from "redux-thunk";
 
 import {
   STORE_PRODUCTS,
@@ -15,7 +15,7 @@ import {
   REMOVE_SHIPPING_OPTIONS,
   UPDATE_CHECKOUT_LIVE_OBJECT,
   ABORT_CHECKOUT,
-} from './actions/actionTypes';
+} from "./actions/actionTypes";
 
 // Declare initial state
 const initialState = {
@@ -69,13 +69,13 @@ const reducer = (state = initialState, action) => {
       return { ...state, cart: action.payload.cart };
     // Dispatch in Checkout client-side
     case GENERATE_CHECKOUT_TOKEN:
-      return { ...state, checkout: { ...state.checkout, checkoutTokenObject: action.payload }};
+      return { ...state, checkout: { ...state.checkout, checkoutTokenObject: action.payload } };
     // Dispatch in Checkout client-side
     case GET_SHIPPING_OPTIONS:
-      return { ...state, checkout: { ...state.checkout, shippingOptions: action.payload }};
+      return { ...state, checkout: { ...state.checkout, shippingOptions: action.payload } };
     // Dispatch in Checkout client-side
     case REMOVE_SHIPPING_OPTIONS:
-      return { ...state, checkout: { ...state.checkout, shippingOptions: [] }};
+      return { ...state, checkout: { ...state.checkout, shippingOptions: [] } };
     // Dispatch in Checkout client-side
     case UPDATE_CHECKOUT_LIVE_OBJECT:
       return {
@@ -84,7 +84,7 @@ const reducer = (state = initialState, action) => {
           ...state.checkout,
           checkoutTokenObject: {
             ...state.checkout.checkoutTokenObject,
-            live: action.payload
+            live: action.payload,
           },
         },
       };
@@ -100,19 +100,14 @@ const reducer = (state = initialState, action) => {
 };
 
 // Enable Redux dev tools
-const devtools = (process.browser && window.__REDUX_DEVTOOLS_EXTENSION__)
-  ? window.__REDUX_DEVTOOLS_EXTENSION__(
-    { trace: true, traceLimit: 25 }
-  )
-  : f => f;
+const devtools =
+  process.browser && window.__REDUX_DEVTOOLS_EXTENSION__
+    ? window.__REDUX_DEVTOOLS_EXTENSION__({ trace: true, traceLimit: 25 })
+    : (f) => f;
 
 // Create a makeStore function and pass in reducer to create the store
 const makeStore = () => {
-  return createStore(
-    reducer,
-    initialState,
-    compose(applyMiddleware(thunk), devtools)
-  );
+  return createStore(reducer, initialState, compose(applyMiddleware(thunk), devtools));
 };
 
 const debug = !process.env.NETLIFY;

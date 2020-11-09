@@ -1,39 +1,39 @@
-import React, { Component } from 'react';
-import Link from 'next/link';
-import Cart from '../cart/Cart';
-import { Transition } from 'react-transition-group';
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import Link from "next/link";
+import Cart from "../cart/Cart";
+import { Transition } from "react-transition-group";
+import { connect } from "react-redux";
 
-import Animation from '../cart/Animation';
+import Animation from "../cart/Animation";
 
 const duration = 300;
 
 const defaultStyle = {
-  zIndex: '-1',
+  zIndex: "-1",
   transition: `height ${duration}ms ease-in-out`,
-  height: 0
+  height: 0,
 };
 
 const transitionStyles = {
-  entering: { height: '100vh' },
-  entered: { height: '100vh' },
+  entering: { height: "100vh" },
+  entered: { height: "100vh" },
   exiting: { height: 0 },
-  exited: { height: 0 }
+  exited: { height: 0 },
 };
 
 const mobileMenuLinks = [
   {
-    name: 'Home',
-    link: '/'
+    name: "Home",
+    link: "/",
   },
   {
-    name: 'Shop',
-    link: '/collection'
+    name: "Shop",
+    link: "/collection",
   },
   {
-    name: 'About',
-    link: '/about'
-  }
+    name: "Chi siamo",
+    link: "/about",
+  },
 ];
 
 class Header extends Component {
@@ -57,13 +57,13 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('Commercejs.Cart.Item.Added', this.handleAddToCartToggle);
+    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("Commercejs.Cart.Item.Added", this.handleAddToCartToggle);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('Commercejs.Cart.Item.Added', this.handleAddToCartToggle);
+    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("Commercejs.Cart.Item.Added", this.handleAddToCartToggle);
   }
 
   toggleCart() {
@@ -80,12 +80,14 @@ class Header extends Component {
   animate() {
     const { transparent } = this.props;
 
-    if (!transparent) {return;}
+    if (!transparent) {
+      return;
+    }
 
     if (window.scrollY > 10) {
-      this.header.current.classList.add('invert');
+      this.header.current.classList.add("invert");
     } else {
-      this.header.current.classList.remove('invert');
+      this.header.current.classList.remove("invert");
     }
   }
 
@@ -94,7 +96,7 @@ class Header extends Component {
     this.setState({ showMobileMenu: !showMobileMenu });
 
     if (!showMobileMenu) {
-      this.header.current.classList.add('invert');
+      this.header.current.classList.add("invert");
     } else {
       this.animate();
     }
@@ -116,7 +118,7 @@ class Header extends Component {
     this.toggleAddToCartAnimation();
     setTimeout(() => {
       this.toggleAddToCartAnimation();
-    }, 3000)
+    }, 3000);
   }
 
   render() {
@@ -125,46 +127,39 @@ class Header extends Component {
 
     return (
       <header className="position-fixed top-0 left-0 right-0 font-weight-semibold no-print">
-        <Cart isOpen={showCart} toggle={value => this.toggleCart(value)} />
+        <Cart isOpen={showCart} toggle={(value) => this.toggleCart(value)} />
         <div
           ref={this.header}
           className={`d-flex header align-items-center justify-content-between position-relative ${
-            transparent ? '' : 'invert'
+            transparent ? "" : "invert"
           }`}
         >
           <div className="d-none d-sm-flex">
             <Link href="/collection">
-              <a href="/collection" className="mr-4 font-color-black">Shop</a>
+              <a href="/collection" className="mr-4 font-color-black">
+                Shop
+              </a>
             </Link>
             <Link href="/about">
               <a href="/about" className="font-color-black">
-                About
+                Chi siamo
               </a>
             </Link>
           </div>
           <div className="logo-container">
             <img
-              src={`/icon/${showMobileMenu ? 'cross' : 'menu'}.svg`}
+              src={`/icon/${showMobileMenu ? "cross" : "menu"}.svg`}
               onClick={this.toggleMobileMenu}
               className="w-32 mr-1 d-block d-sm-none"
               alt="Menu icon"
             />
             <Link href="/">
-              <a>
-                <img
-                  src="/images/commerce.svg"
-                  className="logo cursor-pointer"
-                  alt="Logo"
-                />
-              </a>
+              <a className="logo">Frainelle</a>
             </Link>
           </div>
           <div className="d-flex">
-            <div
-              className="position-relative cursor-pointer"
-              onClick={this.toggleCart}
-            >
-              <Animation isStopped={ this.state.playAddToCartAnimation } />
+            <div className="position-relative cursor-pointer" onClick={this.toggleCart}>
+              <Animation isStopped={this.state.playAddToCartAnimation} />
               <div className="cart-count position-absolute font-size-tiny font-weight-bold">
                 {cart.total_items}
               </div>
@@ -174,12 +169,12 @@ class Header extends Component {
 
         {/* Mobile Menu */}
         <Transition in={showMobileMenu} timeout={duration}>
-          {state => (
+          {(state) => (
             <div
               className="d-sm-none position-fixed top-0 left-0 right-0 overflow-hidden"
               style={{
                 ...defaultStyle,
-                ...transitionStyles[state]
+                ...transitionStyles[state],
               }}
             >
               <div className="position-absolute top-0 left-0 right-0 h-100vh mobile-menu-inner bg-brand700 d-flex flex-column justify-content-center">
@@ -201,4 +196,4 @@ class Header extends Component {
   }
 }
 
-export default connect(state => state)(Header);
+export default connect((state) => state)(Header);
