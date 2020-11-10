@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Root from '../../components/common/Root';
-import Link from 'next/link';
-import { connect } from 'react-redux';
-import { withRouter } from 'next/router';
+import React, { Component } from "react";
+import Root from "../../components/common/Root";
+import Link from "next/link";
+import { connect } from "react-redux";
+import { withRouter } from "next/router";
 
 class Confirm extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Confirm extends Component {
 
   componentDidMount() {
     if (!this.props.orderReceipt) {
-      this.props.router.push('/');
+      this.props.router.push("/");
     }
   }
 
@@ -27,7 +27,7 @@ class Confirm extends Component {
   }
 
   renderPrintButton() {
-    if (typeof window === 'undefined') {
+    if (typeof window === "undefined") {
       return null;
     }
 
@@ -37,8 +37,8 @@ class Confirm extends Component {
         className="d-flex align-items-center text-decoration-underline cursor-pointer mt-3 mt-sm-0 no-print bg-transparent"
         role="button"
       >
-        <img src="/icon/print.svg" className="mr-2 w-20 no-print"/>
-        <div className="no-print">Print Receipt</div>
+        <img src="/icon/print.svg" className="mr-2 w-20 no-print" />
+        <div className="no-print">Ottieni un ricevuta</div>
       </button>
     );
   }
@@ -47,7 +47,7 @@ class Confirm extends Component {
     const { orderReceipt } = this.props;
 
     if (!orderReceipt) {
-      return '';
+      return "";
     }
 
     return (
@@ -58,26 +58,26 @@ class Confirm extends Component {
             <div className="col-12 col-md-10 col-lg-6 offset-md-1 offset-lg-0">
               <div className="h-100 d-flex flex-column align-items-center justify-content-center py-5 px-4 px-sm-5">
                 <div className="bg-success700 h-64 w-64 d-flex rounded-circle align-items-center justify-content-center mb-4">
-                  <img src="/icon/check.svg" className="w-40"/>
+                  <img src="/icon/check.svg" className="w-40" />
                 </div>
                 <h3 className="text-center font-family-secondary mb-3">
-                  Thank you for your purchase!
+                  Grazie per il tuo acquisto!
                 </h3>
                 <h4 className="text-center font-size-subheader mb-3">
-                Your order completed successfully
+                  Il tuo ordine è andato a buon fine
                 </h4>
                 <p className="text-center font-color-light mb-5">
-                  Here is your order number for reference : {orderReceipt.customer_reference}
+                  Questo è il tuo numero di ordine per referenza : {orderReceipt.customer_reference}
                 </p>
                 <div className="d-flex w-100 justify-content-center flex-column flex-sm-row">
                   <Link href="/">
                     <button className="checkout-confirm-buttons h-48 px-3 flex-grow-1 border bg-white border-color-gray500 font-color-light mb-2 mb-sm-0 mr-sm-2 no-print">
-                      Go back home
+                      Torna alla pagina iniziale
                     </button>
                   </Link>
                   <Link href="/collection">
                     <button className="checkout-confirm-buttons h-48 px-3 flex-grow-1 bg-black font-color-white no-print">
-                      Continue shopping
+                      Continua shopping
                     </button>
                   </Link>
                 </div>
@@ -90,22 +90,24 @@ class Confirm extends Component {
                   <div className="border-bottom border-color-gray400 d-flex justify-content-between align-items-start pb-3 flex-column flex-sm-row">
                     <div>
                       <p className="font-color-light mb-2">
-                        Receipt Number: {orderReceipt.customer_reference}
+                        Numero di Ricevuta: {orderReceipt.customer_reference}
                       </p>
-                      <p className="font-size-subheader">Order Details</p>
+                      <p className="font-size-subheader">Dettagli ordine</p>
                     </div>
-                    { this.renderPrintButton() }
+                    {this.renderPrintButton()}
                   </div>
                   <div className="border-bottom border-color-gray400 d-flex align-items-start py-4 flex-column flex-sm-row">
                     <div>
-                      <p className="font-color-light mr-4 mb-3 mb-sm-0">
-                        Ships to
-                      </p>
+                      <p className="font-color-light mr-4 mb-3 mb-sm-0">Invia a</p>
                     </div>
                     <div className="flex-grow-1">
                       <p className="font-color-medium">{orderReceipt.shipping.street}</p>
-                      <p className="font-color-medium">{orderReceipt.shipping.town_city}, {orderReceipt.shipping.country_state}</p>
-                      <p className="font-color-medium">{orderReceipt.shipping.postal_zip_code}, {orderReceipt.shipping.country}</p>
+                      <p className="font-color-medium">
+                        {orderReceipt.shipping.town_city}, {orderReceipt.shipping.country_state}
+                      </p>
+                      <p className="font-color-medium">
+                        {orderReceipt.shipping.postal_zip_code}, {orderReceipt.shipping.country}
+                      </p>
                     </div>
                   </div>
                   <div className="py-4 borderbottom border-color-gray400">
@@ -127,16 +129,18 @@ class Confirm extends Component {
                   </div>
 
                   <div className="py-3 borderbottom border-color-black">
-                      <div className="d-flex justify-content-between align-items-center mb-2">
-                        <p>Subtotal</p>
-                        <p className="text-right font-weight-medium">${orderReceipt.order.subtotal.formatted_with_code}</p>
-                      </div>
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p>Subtotale</p>
+                      <p className="text-right font-weight-medium">
+                        ${orderReceipt.order.subtotal.formatted_with_code}
+                      </p>
+                    </div>
                   </div>
                   <div className="d-flex justify-content-between align-items-center mb-2 pt-3">
-                    <p className="font-size-title font-weight-semibold">
-                      Order total
+                    <p className="font-size-title font-weight-semibold">Totale ordine</p>
+                    <p className="text-right font-weight-semibold font-size-title">
+                      ${orderReceipt.order.total.formatted_with_code}
                     </p>
-                    <p className="text-right font-weight-semibold font-size-title">${orderReceipt.order.total.formatted_with_code}</p>
                   </div>
                 </div>
               </div>
@@ -148,4 +152,4 @@ class Confirm extends Component {
   }
 }
 
-export default withRouter(connect(state => state)(Confirm));
+export default withRouter(connect((state) => state)(Confirm));
