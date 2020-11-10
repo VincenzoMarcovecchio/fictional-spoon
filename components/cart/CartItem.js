@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { removeFromCart, updateCartItem } from '../../store/actions/cartActions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { removeFromCart, updateCartItem } from "../../store/actions/cartActions";
 
 class CartItem extends Component {
   constructor(props) {
@@ -42,31 +42,44 @@ class CartItem extends Component {
               </p>
             </div>
             <div className="d-flex justify-content-between mb-2">
-              {item.variants.map((variant, i) =>
+              {item.variants.map((variant, i) => (
                 <p key={i} className="font-color-light font-weight-small">
                   {variant.variant_name}: {variant.option_name}
                 </p>
-              )}
+              ))}
             </div>
             <div className="d-flex align-items-center justify-content-between pt-2 pb-4">
               <div className="d-flex align-items-center">
-                <button className="p-0 bg-transparent" onClick={() => item.quantity > 1 ? this.handleUpdateCartItem(item.id, item.quantity -1) : this.handleRemoveFromCart(item.id)}>
+                <button
+                  className="p-0 bg-transparent"
+                  onClick={() =>
+                    item.quantity > 1
+                      ? this.handleUpdateCartItem(item.id, item.quantity - 1)
+                      : this.handleRemoveFromCart(item.id)
+                  }
+                >
                   <img src="/icon/minus.svg" className="w-16" />
                 </button>
                 <p className="text-center px-3">{item.quantity}</p>
-                <button className="p-0 bg-transparent" onClick={() => this.handleUpdateCartItem(item.id, item.quantity +1)} >
+                <button
+                  className="p-0 bg-transparent"
+                  onClick={() => this.handleUpdateCartItem(item.id, item.quantity + 1)}
+                >
                   <img src="/icon/plus.svg" className="w-16" />
                 </button>
               </div>
-              <p className="text-right text-decoration-underline font-color-medium cursor-pointer" onClick={() => this.handleRemoveFromCart(item.id)}>
+              <p
+                className="text-right text-decoration-underline font-color-medium cursor-pointer"
+                onClick={() => this.handleRemoveFromCart(item.id)}
+              >
                 Remove
               </p>
             </div>
           </div>
         </div>
-    </div>
-  )
+      </div>
+    );
   }
 }
 
-export default connect(state => state)(CartItem);
+export default connect((state) => state)(CartItem);

@@ -445,7 +445,7 @@ class CheckoutPage extends Component {
             <div className="col-12 col-lg-5 col-md-10 offset-md-1">
               <div className="bg-brand200 p-5 checkout-summary">
                 <div className="borderbottom font-size-subheader border-color-gray400 pb-2 font-weight-medium">
-                  Your order
+                  Il tuo ordine
                 </div>
                 <div className="pt-3 borderbottom border-color-gray400">
                   {(checkout.live ? checkout.live.line_items : []).map((item, index, items) => {
@@ -540,7 +540,7 @@ class CheckoutPage extends Component {
                   onClick={this.captureOrder}
                   disabled={!selectedShippingOption}
                 >
-                  Make payment
+                  Procedi con pagamento
                 </button>
               </div>
             </div>

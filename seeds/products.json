@@ -1,0 +1,25 @@
+[
+  {
+    "product": {
+      "name": "Formaggio",
+      "description": "Enrich your morning and evening beauty ritual and to help reduce the appearance of puffiness and wrinkles",
+      "price": "18.00",
+      "category_id": "categories[2].id"
+    },
+    "variant": [
+      {
+        "name": "Size",
+        "options": [
+          {
+            "description": "200ml",
+            "price": "0.00"
+          },
+          {
+            "description": "500ml",
+            "price": "34.00"
+          }
+        ]
+      }
+    ]
+  }
+]

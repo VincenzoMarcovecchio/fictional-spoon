@@ -2,22 +2,23 @@ import React from "react";
 
 const Footer = () => (
   <footer className="footer pt-5">
+    <img className="pattern" src="/images/patterns.jpg" />
     <div className="custom-container mb-5 pb-5 pt-5">
       <div className="row">
         <div className="col-12 col-sm-6 col-md-4">
-          <p className="font-family-secondary font-size-display1 mb-4">Frainelle</p>
+          <p className=" text-success font-family-secondary font-size-display1 mb-4">Frainelle</p>
           <div className="d-flex font-color-medium mb-5 pb-3 pb-md-0 mb-md-0">
-            <div className="pr-5">
+            <div className="pr-5 text-success">
               <a
                 href="https://commercejs.com/docs/"
-                className="mb-3 d-block font-color-medium"
+                className=" text-success mb-3 d-block font-color-medium"
                 target="_blank"
               >
                 Fraine
               </a>
               <a
                 href="https://commercejs.com/features"
-                className="d-block font-color-medium"
+                className=" text-successd-block font-color-medium"
                 target="_blank"
               >
                 Features
@@ -41,7 +42,7 @@ const Footer = () => (
             </div>
           </div>
         </div>
-        <div className="col-12 col-sm-6 col-md-4">
+        <div className=" text-success col-12 col-sm-6 col-md-4">
           <p className="font-family-secondary font-size-display1 mb-4">Seguici</p>
           <div className="d-flex font-color-medium mb-5 pb-3 pb-md-0 mb-md-0">
             <div className="pr-5">
@@ -79,7 +80,7 @@ const Footer = () => (
           </div>
         </div>
         <div className="col-12 col-md-4">
-          <p className="font-family-secondary font-size-display1 mb-3">Newsletter</p>
+          <p className="font-family-secondary font-size-display1 mb-3 text-success">Newsletter</p>
           <div className="position-relative">
             <input
               className="borderbottom border-color-gray400 h-48 w-100 px-3"
